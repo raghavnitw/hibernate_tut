@@ -1,0 +1,9 @@
+<hibernate-mapping>
+  <class name="StudentPOJO" table="STable">
+    <id name="stNo" column="SNo"><!--mapping the variables to columns in db -->
+      <generator class = "assigned"/><!-- autoincrements the id -->
+    </id>
+    <property name="stName" column="SName"/>
+    <property name="stAddress"/><!-- if the column name is same as variable no need to specify column -->
+  </class>
+</hibernate-mapping>
