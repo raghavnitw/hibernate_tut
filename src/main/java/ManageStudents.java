@@ -1,4 +1,7 @@
+import org.hibernate.Query;
 import org.hibernate.Session;
+
+import java.util.List;
 
 public class ManageStudents{
 
@@ -10,13 +13,26 @@ public class ManageStudents{
 
       StudentPOJO student = new StudentPOJO();
 
-      student.setStNo(1);
-      student.setStName("sms");
-      student.setStAddress("Nagole");
+      student.setStName("sms"+(int) (Math.random()*100));
+      student.setStAddress("Nagole"+(int) (Math.random()*100));
 
       session.save(student);
 
       session.getTransaction().commit();
+
+
+      // Query to list students in the database
+      Query q = session.createQuery("From StudentPOJO ");
+
+      List<StudentPOJO> stuList = q.list();
+
+      System.out.println("Number of students: "+stuList.size());
+
+      for (StudentPOJO studentPOJO: stuList ){
+          System.out.println("Student: "+studentPOJO.getStName());
+      }
+
+      HibernateUtil.shutdown();
       
   }
 
