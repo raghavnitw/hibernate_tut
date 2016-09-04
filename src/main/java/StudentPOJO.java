@@ -1,7 +1,17 @@
-public class StudentPOJO{
+import java.io.Serializable;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "STable")
+public class StudentPOJO implements Serializable{
+
+@Id @GeneratedValue
+@Column(name = "id")
 private int stNo;
+
+@Column(name = "SName")
 private String stName;
+
 private String stAddress;
 
 public void setStNo(int stNo){

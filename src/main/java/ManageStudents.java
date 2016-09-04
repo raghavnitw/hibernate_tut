@@ -18,8 +18,9 @@ public class ManageStudents{
 
       session.save(student);
 
-      session.getTransaction().commit();
+      session.flush();
 
+      session.getTransaction().commit();
 
       // Query to list students in the database
       Query q = session.createQuery("From StudentPOJO ");
